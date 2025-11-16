@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="star.png" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>NICVHO</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta property="og:image" content="https://i.imgur.com/r9Mt5gJ.jpeg" />
+    <meta property="twitter:card" content="https://i.imgur.com/r9Mt5gJ.jpeg" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <script language="JavaScript">
+      <!--
+
+      //Disable right mouse click Script
+      //By Maximus (maximus@nsimail.com) w/ mods by DynamicDrive
+      //For full source code, visit http://www.dynamicdrive.com
+
+      var message = ":P";
+      ///////////////////////////////////
+      function clickIE4() {
+        if (event.button == 2) {
+          alert(message);
+          return false;
+        }
+      }
+
+      function clickNS4(e) {
+        if (document.layers || (document.getElementById && !document.all)) {
+          if (e.which == 2 || e.which == 3) {
+            alert(message);
+            return false;
+          }
+        }
+      }
+
+      if (document.layers) {
+        document.captureEvents(Event.MOUSEDOWN);
+        document.onmousedown = clickNS4;
+      } else if (document.all && !document.getElementById) {
+        document.onmousedown = clickIE4;
+      }
+
+      document.oncontextmenu = new Function("alert(message);return false");
+
+      // -->
+
+      // Close popup when clicking outside the content
+      document.querySelectorAll(".popup").forEach((popup) => {
+        popup.addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.style.display = "none";
+          }
+        });
+      });
+
+      // Optional: open popup on link click
+      document.querySelectorAll(".scroll-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) target.style.display = "flex";
+        });
+      });
+    </script>
+
+    <style type="text/css">
+      body {
+        cursor: url(http://www.rw-designer.com/cursor-extern.php?id=52844);
+      }
+
+      html {
+        overflow: scroll;
+        overflow-x: hidden;
+      }
+      ::-webkit-scrollbar {
+        width: 0; /* remove scrollbar space */
+        background: transparent; /* to make scrollbar invisible */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: transparent;
+      }
+      ::selection {
+        /* Change highlight background color */
+        background: #ffffff00;
+        /* Change highlight text color */
+        color: #8a2be2;
+      }
+
+      body {
+        background-image: url("https://dl.glitter-graphics.com/pub/514/514873kwpj8sc5kp.gif");
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        overflow: hidden;
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .center-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 70vw;
+      }
+
+      .scroll-container {
+        position: relative;
+        display: inline-block;
+        width: 500px;
+      }
+
+      .scroll-image {
+        display: block;
+        top: 16%;
+        left: 48%;
+        width: 1000px;
+        height: auto;
+      }
+
+      .scroll-content {
+        position: absolute;
+        top: 16%;
+        left: 53%;
+        right: -123%;
+        font-size: 18px;
+        text-align: center;
+        width: 400px;
+        font-family: "Pixelify Sans", sans-serif;
+        color: #8a2be2;
+      }
+
+      /* A wrapper to anchor the character in a fixed spot on every device */
+      #scroll-character {
+        position: fixed;
+        top: 35vh; /* consistent space from top */
+        left: 27vw; /* consistent space from left */
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Character sizing that stays consistent */
+      #scroll-character img {
+        width: clamp(50px, 8vw, 90px);
+        height: auto;
+      }
+
+      /* Speech bubble ALWAYS attached to the character */
+      #speech-bubble {
+        position: absolute;
+        bottom: 105%; /* always above the character */
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.291);
+        padding: 10px 14px;
+        font-family: "Pixelify Sans", sans-serif;
+        border-radius: 10px;
+        border: 2px solid white;
+        width: clamp(120px, 20vw, 180px);
+        font-size: clamp(10px, 2vw, 14px);
+        color: white;
+        text-align: center;
+        box-shadow: 0px 4px 10px #8a2be2;
+      }
+
+      /* bubble arrow */
+      #speech-bubble::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 8px solid white;
+      }
+
+      .link-title {
+        display: block;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #8a2be2;
+      }
+
+      .scroll-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        margin: 10px 0;
+        transition: transform 0.2s, color 0.2s;
+      }
+      .scroll-link:hover {
+        transform: scale(1.1);
+        color: #9400d3;
+        text-shadow: 0 0 3px #9370db;
+      }
+
+      .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .popup:target {
+        display: flex;
+      }
+
+      .popup-content {
+        position: relative;
+        width: 80%;
+        max-width: 700px;
+        animation: fadeIn 1s ease forwards;
+      }
+
+      .popup-content img {
+        width: 100%;
+        border-radius: 12px;
+        display: block;
+      }
+
+      .popup-text {
+        position: absolute;
+        bottom: 10%;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 24px;
+        opacity: 0;
+        animation: fadeText 2s ease 0.5s forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes fadeText {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Popup overlay - hidden by default */
+      .popup-message {
+        display: none; /* hide initially */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 999;
+      }
+
+      /* Popup content box */
+      .popup-box {
+        background: #fff8dc;
+        border: 2px solid #8a2be2;
+        color: #8a2be2;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 18px;
+        text-align: center;
+        padding: 25px 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+        top: 0; /* adjust for vertical positioning */
+        animation: slideUp 0.6s ease;
+      }
+
+      /* Button styling */
+      .popup-box button {
+        background: #8a2be2;
+        color: white;
+        font-family: "Pixelify Sans", sans-serif;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        margin-top: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .popup-box button:hover {
+        background: #9400d3;
+        transform: scale(1.05);
+      }
+
+      /* Slide-up animation */
+      @keyframes slideUp {
+        from {
+          transform: translateY(40px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Optional: responsive text for small screens */
+      @media (max-width: 600px) {
+        .popup-box {
+          width: 80%;
+          font-size: 16px;
+          padding: 20px;
+        }
+      }
+
+      #music-player {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        background: rgba(190, 79, 255, 0.66);
+        padding: 10px 15px;
+        border-radius: 12px;
+        font-family: "Pixelify Sans", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        z-index: 998;
+      }
+
+      #player-icon img {
+        width: 60px;
+        cursor: pointer;
+      }
+
+      #playlist {
+        margin-top: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 8px;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.4s ease;
+      }
+
+      #playlist .track {
+        padding: 8px 12px;
+        cursor: pointer;
+        border-bottom: 1px solid #ccc;
+      }
+
+      #playlist .track:last-child {
+        border-bottom: none;
+      }
+
+      #playlist .track:hover {
+        background: #8a2be2;
+        color: white;
+      }
+
+      #controls {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      #controls img {
+        width: 50px;
+        cursor: pointer;
+      }
+
+      .hidden {
+        max-height: 0;
+      }
+      #playlist.show {
+        max-height: 300px; /* expands to show playlist */
+      }
+
+      #mute.muted {
+        filter: grayscale(100%) brightness(60%);
+        opacity: 0.6;
+      }
+
+      #shuffle.active {
+        filter: grayscale(100%) brightness(60%);
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="scroll-character">
+      <img src="character.gif" id="char-gif" />
+
+      <div id="speech-bubble">Hello! I'm sitting on your scroll bar!</div>
+    </div>
+
+    <div class="center-wrapper">
+      <div class="scroll-container">
+        <img src="scroll.png" alt="scroll" class="scroll-image" />
+        <div class="scroll-content">
+          <a href="#popup1" class="scroll-link">
+            <span class="link-title">BORROWED SECONDS</span>
+          </a>
+
+          <br />
+
+          <a href="#popup2" class="scroll-link"
+            >The clock keeps time I cant delay. Each moment slips then fades
+            away.</a
+          >
+
+          <br />
+
+          <a href="#popup3" class="scroll-link"
+            >The shadow grows as daylight dies. While memory clings and never
+            lies.</a
+          >
+
+          <br />
+
+          <a href="#popup4" class="scroll-link"
+            >The stars recall what words can't say. Soft echoes of a brighter
+            day.</a
+          >
+
+          <br />
+
+          <a href="#popup5" class="scroll-link"
+            >Though time may steal what hearts have known. Still whispers hope,
+            though all has flown.</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div id="popup1" class="popup">
+      <div class="popup-content">
+        <img src="paper.png" alt="Image 1" />
+        <div
+          class="popup-text"
+          style="
+            font-family: 'Pixelify Sans', san-serif;
+            top: 50%;
+            left: 30%;
+            font-size: 20px;
+            color: rgb(174, 174, 171);
+          "
+        >
+          Welcome.
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup 2 -->
+    <div id="popup2" class="popup">
+      <div class="popup-content">
+        <img src="clock.gif" alt="Image 2" />
+        <div
+          class="popup-text"
+          style="
+            font-family: 'Pixelify Sans', san-serif;
+            top: 85%;
+            left: 2%;
+            font-size: 20px;
+            color: rgb(174, 174, 171);
+          "
+        >
+          Time seems so..fabricated..
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup 3 -->
+    <div id="popup3" class="popup">
+      <div class="popup-content">
+        <img src="memories.png" alt="Image 3" />
+        <div
+          class="popup-text"
+          style="
+            font-family: 'Pixelify Sans', san-serif;
+            top: 50%;
+            left: -5%;
+            font-size: 16px;
+            color: rgb(174, 174, 171);
+          "
+        >
+          These memories are as sweet as they continue to fade away.
+        </div>
+      </div>
+    </div>
+
+    <div id="popup4" class="popup">
+      <div class="popup-content">
+        <img src="paper.png" alt="for mom," />
+        <div
+          class="popup-text"
+          style="
+            top: 20%;
+            left: 20%;
+            width: 450px;
+            font-size: 18px;
+            color: rgb(39, 39, 31);
+            line-height: 1.5;
+            text-align: left;
+            font-family: 'Pixelify Sans', san-serif;
+          "
+        >
+          <span style="font-size: 24px">To Mom</span><br /><br />
+
+          Hey mom, <span style="color: #ba55d3">I love you</span> and I hope
+          you're doing really well!<br />
+
+          Y'know, I've been thinking — maybe we should try that new pizza place
+          down the street lol But I guess it's a bummer we can't cuz— y'know,
+          <span style="color: #d8bfd8; font-weight: bold"
+            >I won't really be here</span
+          >
+          and all haha.<br />
+
+          But! just know that
+          <span style="color: #ba55d3">im really gonna miss you though!</span>
+          <br /><br />
+
+          <span style="font-size: 24px; color: #d8bfd8; font-weight: bold"
+            >...goodbye,mom.</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div id="popup5" class="popup">
+      <div class="popup-content">
+        <img src="paper.png" alt="from mom," />
+        <div
+          class="popup-text"
+          style="
+            top: 12%;
+            left: 20%;
+            width: 450px;
+            font-size: 18px;
+            color: rgb(39, 39, 31);
+            line-height: 1.5;
+            text-align: left;
+            font-family: 'Pixelify Sans', san-serif;
+          "
+        >
+          <span style="font-size: 18px">A Letter from Mom</span><br /><br />
+
+          I crouched beside where you lay, cradling your head in my arms,
+          looking out the window through tears and the beeping of machines
+          around us, In such a beautiful
+          <span style="color: #ba55d3">starry night</span> I realized, from that
+          moment I saw how the shape of your eyes were like mine, the curve of
+          your nose, the slight dimple on your cheek when you smile. But soon i
+          came to, your eyes remained closed, your breathing shallow, your hands
+          resembled your little ones back then as you gripped weakly on my
+          mine,as if telling me<span style="color: #ba55d3"
+            >"It’s time for me to go..i’m not afraid anymore…everything will be
+            alright now."</span
+          >
+          , nurses took you from my arms, rushing, scuttling, trying everything
+          they can to get you back to me but your eyes remained closed, your
+          breath non existent, your hands never squeezed mine back as I squeezed
+          yours. my darling, you were the
+          <span style="color: #ba55d3">star</span> that ignited the dark parts
+          of my life, but it gradually dimmed as you lived on; and on this
+          <span style="color: #ba55d3">starry night</span> , you took your life.
+          I'm thankful that you were a part of this life ,
+          <span style="color: #ba55d3">starry night</span> , a part of me, a
+          part of everyone that appreciate the light you shine, and now, you
+          shine brighter; as a <span style="color: #ba55d3">star</span> above,
+          joining this night's sky. -mom
+        </div>
+      </div>
+    </div>
+
+    <!-- Message popup -->
+    <div id="welcome-popup" class="popup-message">
+      <div class="popup-box">
+        <p>
+          P.S. This is not a mobile site, but if you want a similar experience
+          to desktop, you can click on the three dots on the upper-right part of
+          your browser and navigate to
+          <span style="color: #8a2be2">DESKTOP SITE</span>
+        </p>
+        <button onclick="closePopup()">lezz gaur</button>
+      </div>
+    </div>
+
+    <!-- Music Player -->
+    <div id="music-player">
+      <div id="player-icon" onclick="togglePlaylist()">
+        <!-- This is the main icon to open/close the playlist -->
+        <img src="tracks.png" alt="Music Icon" />
+      </div>
+
+      <div id="playlist" class="hidden">
+        <div class="track" data-src="beach-house-tune-.mp3">beach house</div>
+        <div class="track" data-src="golden star.mp3">a golden star</div>
+        <div class="track" data-src="moon light jellies.mp3">
+          moonlight jellies
+        </div>
+        <div class="track" data-src="lounge.mp3">lounge</div>
+        <div class="track" data-src="Leo's Song.mp3">Leo</div>
+      </div>
+
+      <div id="controls">
+        <img
+          src="play-icon.png"
+          id="play-pause"
+          onclick="togglePlay()"
+          alt="Play/Pause"
+        />
+        <img
+          src="shuffle-icon.png"
+          id="shuffle"
+          onclick="toggleShuffle()"
+          alt="Shuffle"
+        />
+        <img src="mute-icon.png" id="mute" onclick="toggleMute()" alt="Mute" />
+      </div>
+
+      <audio id="audio-player" src=""></audio>
+    </div>
+
+    <script>
+      // Close popup when clicking outside the content
+      document.querySelectorAll(".popup").forEach((popup) => {
+        popup.addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.style.display = "none";
+          }
+        });
+      });
+
+      // Optional: open popup on link click
+      document.querySelectorAll(".scroll-link").forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) target.style.display = "flex";
+        });
+      });
+
+      window.addEventListener("load", function () {
+        // Show welcome popup
+        const welcomePopup = document.getElementById("welcome-popup");
+        welcomePopup.style.display = "flex";
+
+        // Close popup when clicking outside the content
+        welcomePopup.addEventListener("click", function (e) {
+          if (e.target === this) {
+            this.style.display = "none";
+          }
+        });
+
+        // Close popup on button click
+        const closeButton = welcomePopup.querySelector("button");
+        closeButton.addEventListener("click", () => {
+          welcomePopup.style.display = "none";
+        });
+
+        // Audio player setup
+        const audioPlayer = document.getElementById("audio-player");
+        const playlist = document.getElementById("playlist");
+        const tracks = Array.from(
+          document.querySelectorAll("#playlist .track")
+        );
+        const playPauseBtn = document.getElementById("play-pause");
+        const playerIcon = document.getElementById("player-icon");
+        const muteBtn = document.getElementById("mute");
+        const shuffleBtn = document.getElementById("shuffle");
+        let shuffle = false;
+        let currentTrackIndex = 0;
+        let musicStarted = false;
+
+        // Start music on first user interaction
+        function startMusic() {
+          if (!musicStarted) {
+            audioPlayer.src = tracks[currentTrackIndex].dataset.src;
+            audioPlayer.play();
+            musicStarted = true;
+          }
+        }
+        document.addEventListener("click", startMusic, { once: true });
+
+        // Open/close playlist
+        playerIcon.addEventListener("click", () => {
+          playlist.classList.toggle("show");
+        });
+
+        // Play/pause toggle
+        playPauseBtn.addEventListener("click", () => {
+          if (!audioPlayer.src) return;
+          if (audioPlayer.paused) {
+            audioPlayer.play();
+          } else {
+            audioPlayer.pause();
+          }
+        });
+
+        // Mute/unmute
+        muteBtn.addEventListener("click", () => {
+          audioPlayer.muted = !audioPlayer.muted;
+          muteBtn.classList.toggle("muted", audioPlayer.muted);
+        });
+
+        // Shuffle toggle
+        shuffleBtn.addEventListener("click", () => {
+          shuffle = !shuffle;
+          shuffleBtn.classList.toggle("active", shuffle);
+        });
+
+        // Clicking track plays it immediately
+        tracks.forEach((track, index) => {
+          track.addEventListener("click", () => {
+            currentTrackIndex = index;
+            audioPlayer.src = track.dataset.src;
+            audioPlayer.play();
+          });
+        });
+
+        // Update play/pause icon
+        audioPlayer.addEventListener(
+          "play",
+          () => (playPauseBtn.src = "pause-icon.png")
+        );
+        audioPlayer.addEventListener(
+          "pause",
+          () => (playPauseBtn.src = "play-icon.png")
+        );
+
+        // Move to next track when current ends
+        audioPlayer.addEventListener("ended", () => {
+          if (shuffle) {
+            currentTrackIndex = Math.floor(Math.random() * tracks.length);
+          } else {
+            currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
+          }
+          audioPlayer.src = tracks[currentTrackIndex].dataset.src;
+          audioPlayer.play();
+        });
+
+        // Speech bubble rotation
+        const lines = [
+          "Welcome!",
+          "click on the lines and title of the poem!",
+          "Explanations for the poem will be provided when the title is clicked",
+          "Give the music player a try (credits:ConcernedApe)",
+          "I'll link my personal portfolio site here (soon;_;)",
+        ];
+
+        let index = 0;
+        setInterval(() => {
+          document.getElementById("speech-bubble").innerText = lines[index];
+          index = (index + 1) % lines.length;
+        }, 4000);
+      });
+    </script>
+  </body>
+</html>
